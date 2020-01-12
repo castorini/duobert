@@ -2,6 +2,11 @@
 
 duoBERT is a pairwise ranking model based on BERT that improves upon BERT re-ranker (which we call monoBERT).
 
+TODO: Add MS MARCO Leaderboard results
+
+TODO: Add Figure 1 from paper
+
+
 For more details, check out our paper:
 - R Nogueira, W Yang, K Cho, J Lin. [Multi-stage document ranking with BERT](https://arxiv.org/pdf/1910.14424.pdf).
 
@@ -103,6 +108,10 @@ python3 msmarco_eval.py qrels.dev.small.tsv ./msmarco_predictions_dev.tsv
 
 The output should be like this:
 ```
+#####################
+MRR @10: 0.3904377586755809
+QueriesRanked: 6980
+#####################
 ```
 
 ## Training DuoBERT
@@ -167,7 +176,7 @@ python convert_msmarco_to_duobert_tfrecord.py \
   --max_query_length=64
 ``` 
 
-This conversion takes approximately 30-40 hours and will produce the following files:
+This conversion takes approximately 30-50 hours and will produce the following files:
 - `dataset_train.tf`
 - `dataset_dev.tf`
 - `dataset_test.tf`
