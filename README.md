@@ -54,7 +54,7 @@ File | Size | MD5 | Download
 ## Replicating our MS MARCO results with duoBERT
 Here we provide instructions on how to replicate our BM25 + monoBERT + duoBERT + TCP dev run on MS MARCO leaderboard.
 
-NOTE 1: we will run these experiments using a TPU; thus, you will need a Google Cloud account. Alternatively, you can try using a GPU, but we do not
+NOTE 1: we will run these experiments using a TPU; thus, you will need a Google Cloud account. Alternatively, you can use a GPU, but we haven't tried ourselves.
 
 NOTE 2: For instructions on how to train and run inference using monoBERT, please check this [repository](https://github.com/nyu-dl/dl4marco-bert).
 
