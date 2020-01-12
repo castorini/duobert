@@ -103,10 +103,6 @@ python3 msmarco_eval.py qrels.dev.small.tsv ./msmarco_predictions_dev.tsv
 
 The output should be like this:
 ```
-#####################
-MRR @10: 0.3946586619365992
-QueriesRanked: 6979
-#####################
 ```
 
 ## Training DuoBERT
@@ -171,7 +167,7 @@ python convert_msmarco_to_duobert_tfrecord.py \
   --max_query_length=64
 ``` 
 
-This conversion takes approximately 40-50 hours and will produce the following files:
+This conversion takes approximately 30-40 hours and will produce the following files:
 - `dataset_train.tf`
 - `dataset_dev.tf`
 - `dataset_test.tf`
