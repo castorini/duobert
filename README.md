@@ -1,10 +1,17 @@
 # duoBERT
 
-duoBERT is a pairwise ranking model based on BERT that improves upon BERT re-ranker (which we call monoBERT).
+duoBERT is a pairwise ranking model based on BERT that is the last stage of a multi-stage retrieval pipeline:
 
-TODO: Add MS MARCO Leaderboard results
+![duobert](duobert_architecture.png)
 
-TODO: Add Figure 1 from paper
+To train and re-rank with monoBERT, please check [this repository](https://github.com/nyu-dl/dl4marco-bert).
+
+As of Jan 13th 2020, our MS MARCO leaderboard entry is the top scoring model with available code:
+
+MSMARCO Passage Re-Ranking Leaderboard (Jan 13th 2020) | Eval MRR@10  | Dev MRR@10
+------------------------------------- | :------: | :------:
+SOTA - Enriched BERT base + AOA index + CAS | 0.393 | 0.408
+BM25 + monoBERT + duoBERT + TCP (this code) | 0.379 | 0.390
 
 
 For more details, check out our paper:
@@ -15,10 +22,9 @@ For more details, check out our paper:
 
 We make the following data available for download:
 
-+ `queries.dev.small.tsv`: 6,980 queries from the MS MARCO dev set. In this tsv file, the first column is the query id, and the second is the query text.
-+ `queries.eval.small.tsv`: 6,837 queries from the MS MARCO test (eval) set. In this tsv file, the first column is the query id, and the second is the query text.
-+ `qrels.dev.small.tsv`: 7,437 pairs of query relevant passage ids from the MS MARCO dev set. In this tsv file, the first column is the query id, and the third column is the passage id. The other two columns (second and fourth) are not used.
-+ `collection.tar.gz`: All passages (8,841,823) in the MS MARCO passage corpus. In this tsv file, the first column is the passage id, and the second is the passage text.
++ `bert-large-msmarco-pretrained_only.zip`: monoBERT large pretrained on the MS MARCO corpus but not finetuned on the ranking task. We pretrained this model starting from the original BERT-large WWM (Whole Word Mask) checkpoint. It was pretrained for 100k iterations, batch size 128, learning rate 3e-6, and 10k warmup steps. We finetuned monoBERT and duoBERT from this checkpoint.
++ `monobert-large-msmarco-pretrained-and-finetuned.zip`: monoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
++ `duobert-large-msmarco-pretrained-and-finetuned.zip`: monoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
 + `run.monobert.dev.small.tsv`:  Approximately 6,980,000 pairs of dev set queries and retrieved passages using BM25 and re-ranked with monoBERT. In this tsv file, the first column is the query id, the second column is the passage id, and the third column is the rank of the passage. There are 1000 passages per query in this file.
 + `run.monobert.test.small.tsv`:  Approximately 6,837,000 pairs of test set queries and retrieved passages using BM25 and re-ranked with monoBERT.
 + `run.duobert.dev.small.tsv`:  Approximately 6,980 x 30 pairs of dev set queries and passages re-ranked using duoBERT. In this run, the input to duoBERT were the top-30 passages re-ranked by monoBERT.
@@ -28,19 +34,19 @@ We make the following data available for download:
 + `dataset_test.tf`:  Approximately 6,837 x 30 pairs of test set queries and passages in the TF Record format. These top-30 passages will be re-ranked by duoBERT.
 + `query_doc_ids_dev.txt`:  Approximately 6,980 x 30 pairs of query and doc id that will be used during inference.
 + `query_doc_ids_test.txt`:  Approximately 6,837 x 30 pairs of query and doc id that will be used during inference.
-+ `bert-large-msmarco-pretrained_only.zip`: monoBERT large pretrained on the MS MARCO corpus but not finetuned on the ranking task. We pretrained this model starting from the original BERT-large WWM (Whole Word Mask) checkpoint. It was pretrained for 100k iterations, batch size 128, learning rate 3e-6, and 10k warmup steps. We finetuned monoBERT and duoBERT from this checkpoint.
-+ `monobert-large-msmarco-pretrained-and-finetuned.zip`: monoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
-+ `duobert-large-msmarco-pretrained-and-finetuned.zip`: monoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
++ `queries.dev.small.tsv`: 6,980 queries from the MS MARCO dev set. In this tsv file, the first column is the query id, and the second is the query text.
++ `queries.eval.small.tsv`: 6,837 queries from the MS MARCO test (eval) set. In this tsv file, the first column is the query id, and the second is the query text.
++ `qrels.dev.small.tsv`: 7,437 pairs of query relevant passage ids from the MS MARCO dev set. In this tsv file, the first column is the query id, and the third column is the passage id. The other two columns (second and fourth) are not used.
++ `collection.tar.gz`: All passages (8,841,823) in the MS MARCO passage corpus. In this tsv file, the first column is the passage id, and the second is the passage text.
++ `triples.train.small.tar.gz`: Approximatelly 40M triples of query, relevant and non-relevant passages that are used to train duoBERT.
 
 Download and verify the above files from the below table:
 
 File | Size | MD5 | Download
 :----|-----:|:----|:-----
-`queries.dev.small.tsv` | 283 KB | `41e980d881317a4a323129d482e9f5e5` | [[GCS](https://storage.googleapis.com/duobert_git/queries.dev.small.tsv)] [[Dropbox](https://www.dropbox.com/s/hq6xjhswiz60siu/queries.dev.small.tsv)]
-`queries.eval.small.tsv` | 274 KB | `bafaf0b9eb23503d2a5948709f34fc3a` | [[GCS](https://storage.googleapis.com/duobert_git/queries.eval.small.tsv)] [[Dropbox]()]
-`qrels.dev.small.tsv` | 140 KB| `38a80559a561707ac2ec0f150ecd1e8a` | [[GCS](https://storage.googleapis.com/duobert_git/qrels.dev.small.tsv)] [[Dropbox](https://www.dropbox.com/s/khsplt2fhqwjs0v/qrels.dev.small.tsv)]
-`collection.tar.gz` | 987 MB | `87dd01826da3e2ad45447ba5af577628` | [[GCS](https://storage.googleapis.com/duobert_git/collection.tar.gz)] [[Dropbox](https://www.dropbox.com/s/lvvpsx0cjk4vemv/collection.tar.gz)]
-`triples.train.small.tar.gz` | 7.4 GB | `c13bf99ff23ca691105ad12eab837f84` | [[GCS](https://storage.googleapis.com/duobert_git/triples.train.small.tar.gz)]
+`bert-large-msmarco-pretrained-only.zip` |  3.44 GB | `4ffd0bc14221aa209b7e2af0ea54bac0` | [[GCS](https://storage.googleapis.com/duobert_git/bert-large-msmarco-pretrained-only.zip)] [[Dropbox]()]
+`monobert-large-msmarco-pretrained-and-finetuned.zip` | 3.42 GB | `db201b6433b3e605201746bda6b7723b` | [[GCS](https://storage.googleapis.com/duobert_git/monobert-large-msmarco-pretrained-and-finetuned.zip)] [[Dropbox]()]
+`duobert-large-msmarco-pretrained-and-finetuned.zip` | 3.43 GB | `5b7c64cbfd34d3782f74fd01b3380a23` | [[GCS](https://storage.googleapis.com/duobert_git/duobert-large-msmarco-pretrained-and-finetuned.zip)] [[Dropbox]()]
 `run.monobert.dev.small.tsv` | 127 MB | `63d0a07832d91d1e6ece5c867d346be7` | [[GCS](https://storage.googleapis.com/duobert_git/run.monobert.dev.small.tsv)] [[Dropbox]()]
 `run.monobert.test.small.tsv` | 125 MB | `3dcb15d93f1fe1943d7fac3f72961784` | [[GCS](https://storage.googleapis.com/duobert_git/run.monobert.test.small.tsv)] [[Dropbox]()]
 `run.duobert.dev.small.tsv` | 6 MB | `dce7f9fe8c1a844c6075b470530ec91e` | [[GCS](https://storage.googleapis.com/duobert_git/run.duobert.dev.small.tsv)] [[Dropbox]()]
@@ -50,10 +56,11 @@ File | Size | MD5 | Download
 `dataset_test.tf` | 3.4 GB | `cc59c0c8f77f376ba7b487dec5a1f376` | [[GCS](https://storage.googleapis.com/duobert_git/dataset_test.tf)] [[Dropbox]()]
 `query_doc_ids_dev.txt` | 134 M | `0b1ef659127339f71e70da28d63e513c` | [[GCS](https://storage.googleapis.com/duobert_git/query_doc_ids_dev.txt)] [[Dropbox]()]
 `query_doc_ids_test.txt` | 131 M | `a857664b0cb47219266a6edeb7eb4b6c` | [[GCS](https://storage.googleapis.com/duobert_git/query_doc_ids_test.txt)] [[Dropbox]()]
-`bert-large-msmarco-pretrained-only.zip` |  3.44 GB | `4ffd0bc14221aa209b7e2af0ea54bac0` | [[GCS](https://storage.googleapis.com/duobert_git/bert-large-msmarco-pretrained-only.zip)] [[Dropbox]()]
-`monobert-large-msmarco-pretrained-and-finetuned.zip` | 3.42 GB | `db201b6433b3e605201746bda6b7723b` | [[GCS](https://storage.googleapis.com/duobert_git/monobert-large-msmarco-pretrained-and-finetuned.zip)] [[Dropbox]()]
-`duobert-large-msmarco-pretrained-and-finetuned.zip` | 3.43 GB | `5b7c64cbfd34d3782f74fd01b3380a23` | [[GCS](https://storage.googleapis.com/duobert_git/duobert-large-msmarco-pretrained-and-finetuned.zip)] [[Dropbox]()]
-
+`queries.dev.small.tsv` | 283 KB | `41e980d881317a4a323129d482e9f5e5` | [[GCS](https://storage.googleapis.com/duobert_git/queries.dev.small.tsv)] [[Dropbox](https://www.dropbox.com/s/hq6xjhswiz60siu/queries.dev.small.tsv)]
+`queries.eval.small.tsv` | 274 KB | `bafaf0b9eb23503d2a5948709f34fc3a` | [[GCS](https://storage.googleapis.com/duobert_git/queries.eval.small.tsv)] [[Dropbox]()]
+`qrels.dev.small.tsv` | 140 KB| `38a80559a561707ac2ec0f150ecd1e8a` | [[GCS](https://storage.googleapis.com/duobert_git/qrels.dev.small.tsv)] [[Dropbox](https://www.dropbox.com/s/khsplt2fhqwjs0v/qrels.dev.small.tsv)]
+`collection.tar.gz` | 987 MB | `87dd01826da3e2ad45447ba5af577628` | [[GCS](https://storage.googleapis.com/duobert_git/collection.tar.gz)] [[Dropbox](https://www.dropbox.com/s/lvvpsx0cjk4vemv/collection.tar.gz)]
+`triples.train.small.tar.gz` | 7.4 GB | `c13bf99ff23ca691105ad12eab837f84` | [[GCS](https://storage.googleapis.com/duobert_git/triples.train.small.tar.gz)]
 
 
 ## Replicating our MS MARCO results with duoBERT
