@@ -2,7 +2,7 @@
 
 duoBERT is a pairwise ranking model based on BERT that is the last stage of a multi-stage retrieval pipeline:
 
-![duobert](duobert_architecture.png)
+![duobert](duobert_architecture.svg)
 
 To train and re-rank with monoBERT, please check [this repository](https://github.com/nyu-dl/dl4marco-bert).
 
