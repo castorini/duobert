@@ -24,12 +24,12 @@ We make the following data available for download:
 
 + `bert-large-msmarco-pretrained_only.zip`: monoBERT large pretrained on the MS MARCO corpus but not finetuned on the ranking task. We pretrained this model starting from the original BERT-large WWM (Whole Word Mask) checkpoint. It was pretrained for 100k iterations, batch size 128, learning rate 3e-6, and 10k warmup steps. We finetuned monoBERT and duoBERT from this checkpoint.
 + `monobert-large-msmarco-pretrained-and-finetuned.zip`: monoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
-+ `duobert-large-msmarco-pretrained-and-finetuned.zip`: monoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
++ `duobert-large-msmarco-pretrained-and-finetuned.zip`: duoBERT large pretrained on the MS MARCO corpus and finetuned on the MS MARCO ranking task.
 + `run.monobert.dev.small.tsv`:  Approximately 6,980,000 pairs of dev set queries and retrieved passages using BM25 and re-ranked with monoBERT. In this tsv file, the first column is the query id, the second column is the passage id, and the third column is the rank of the passage. There are 1000 passages per query in this file.
 + `run.monobert.test.small.tsv`:  Approximately 6,837,000 pairs of test set queries and retrieved passages using BM25 and re-ranked with monoBERT.
 + `run.duobert.dev.small.tsv`:  Approximately 6,980 x 30 pairs of dev set queries and passages re-ranked using duoBERT. In this run, the input to duoBERT were the top-30 passages re-ranked by monoBERT.
 + `run.duobert.test.tsv`:  Approximately 6,837 x 30 pairs of test set queries and passages re-ranked using duoBERT. In this run, the input to duoBERT were the top-30 passages re-ranked by monoBERT.
-+ `dataset_train.tf`:  Approximately 40M pairs of training set queries and passages (relevant and non-relevant) in the TF Record format.
++ `dataset_train.tf`:  Approximately 80M pairs of training set queries and passages (40M relevant and 40M non-relevant) in the TF Record format.
 + `dataset_dev.tf`:  Approximately 6,980 x 30 pairs of dev set queries and passages in the TF Record format. These top-30 passages will be re-ranked by duoBERT.
 + `dataset_test.tf`:  Approximately 6,837 x 30 pairs of test set queries and passages in the TF Record format. These top-30 passages will be re-ranked by duoBERT.
 + `query_doc_ids_dev.txt`:  Approximately 6,980 x 30 pairs of query and doc id that will be used during inference.
@@ -51,7 +51,7 @@ File | Size | MD5 | Download
 `run.monobert.test.small.tsv` | 125 MB | `3dcb15d93f1fe1943d7fac3f72961784` | [[GCS](https://storage.googleapis.com/duobert_git/run.monobert.test.small.tsv)] [[Dropbox]()]
 `run.duobert.dev.small.tsv` | 6 MB | `dce7f9fe8c1a844c6075b470530ec91e` | [[GCS](https://storage.googleapis.com/duobert_git/run.duobert.dev.small.tsv)] [[Dropbox]()]
 `run.duobert.test.small.tsv` | 6 MB | `6feab65866db449057e588c8c33db0de` | [[GCS](https://storage.googleapis.com/duobert_git/run.duobert.test.small.tsv)] [[Dropbox]()]
-`dataset_train.tf` |  GB | `` | [[GCS](https://storage.googleapis.com/duobert_git/dataset_train.tf)] [[Dropbox]()]
+`dataset_train.tf` | 43.5 GB | `23686be82172cc587ccad04bcac74147` | [[GCS](https://storage.googleapis.com/duobert_git/dataset_train.tf)] [[Dropbox]()]
 `dataset_dev.tf` | 3.4 GB | `596f016c5d9c789c667aa5112194caed` | [[GCS](https://storage.googleapis.com/duobert_git/dataset_dev.tf)] [[Dropbox]()]
 `dataset_test.tf` | 3.4 GB | `cc59c0c8f77f376ba7b487dec5a1f376` | [[GCS](https://storage.googleapis.com/duobert_git/dataset_test.tf)] [[Dropbox]()]
 `query_doc_ids_dev.txt` | 134 M | `0b1ef659127339f71e70da28d63e513c` | [[GCS](https://storage.googleapis.com/duobert_git/query_doc_ids_dev.txt)] [[Dropbox]()]
