@@ -60,7 +60,7 @@ File | Size | MD5 | Download
 `queries.eval.small.tsv` | 274 KB | `bafaf0b9eb23503d2a5948709f34fc3a` | [[GCS](https://storage.googleapis.com/duobert_git/queries.eval.small.tsv)] [[Dropbox](https://www.dropbox.com/s/kjf4bjk1vygipcc/queries.eval.small.tsv)]
 `qrels.dev.small.tsv` | 140 KB| `38a80559a561707ac2ec0f150ecd1e8a` | [[GCS](https://storage.googleapis.com/duobert_git/qrels.dev.small.tsv)] [[Dropbox](https://www.dropbox.com/s/5t6e2225rt6ikym/qrels.dev.small.tsv)]
 `collection.tar.gz` | 987 MB | `87dd01826da3e2ad45447ba5af577628` | [[GCS](https://storage.googleapis.com/duobert_git/collection.tar.gz)] [[Dropbox](https://www.dropbox.com/s/m1n2wf80l1lb9j1/collection.tar.gz)]
-`triples.train.small.tar.gz` | 7.4 GB | `c13bf99ff23ca691105ad12eab837f84` | [[GCS](https://www.dropbox.com/s/6r4a8hpcgq0szep/triples.train.small.tar.gz)]
+`triples.train.small.tar.gz` | 7.4 GB | `c13bf99ff23ca691105ad12eab837f84` | [[GCS](https://storage.googleapis.com/duobert_git/triples.train.small.tar.gz)] [[Dropbox](https://www.dropbox.com/s/6r4a8hpcgq0szep/triples.train.small.tar.gz)]
 
 
 ## Replicating our MS MARCO results with duoBERT
