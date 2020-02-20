@@ -44,7 +44,7 @@ Download and verify the above files from the below table:
 
 File | Size | MD5 | Download
 :----|-----:|:----|:-----
-`bert-large-msmarco-pretrained-only.zip` |  3.44 GB | `4ffd0bc14221aa209b7e2af0ea54bac0` | [[GCS](https://storage.googleapis.com/duobert_git/bert-large-msmarco-pretrained-only.zip)] [[Dropbox](https://www.dropbox.com/s/rbchki170ueclen/bert-large-msmarco-pretrained-only.zip)]
+`bert-large-msmarco-pretrained-only.zip` |  3.44 GB | `88f1d0bd351058b1da1eb49b60c2e750` | [[GCS](https://storage.googleapis.com/duobert_git/bert-large-msmarco-pretrained-only.zip)] [[Dropbox](https://www.dropbox.com/s/rbchki170ueclen/bert-large-msmarco-pretrained-only.zip)]
 `monobert-large-msmarco-pretrained-and-finetuned.zip` | 3.42 GB | `db201b6433b3e605201746bda6b7723b` | [[GCS](https://storage.googleapis.com/duobert_git/monobert-large-msmarco-pretrained-and-finetuned.zip)] [[Dropbox](https://www.dropbox.com/s/fhy7vf5488muz9u/monobert-large-msmarco-pretrained-and-finetuned.zip)]
 `duobert-large-msmarco-pretrained-and-finetuned.zip` | 3.43 GB | `dcae7441103ae8241f16df743b75337b` | [[GCS](https://storage.googleapis.com/duobert_git/duobert-large-msmarco-pretrained-and-finetuned.zip)] [[Dropbox](https://www.dropbox.com/s/kxd8fitk4ax1hb5/duobert-large-msmarco-pretrained-and-finetuned.zip)]
 `run.monobert.dev.small.tsv` | 127 MB | `63d0a07832d91d1e6ece5c867d346be7` | [[GCS](https://storage.googleapis.com/duobert_git/run.monobert.dev.small.tsv)] [[Dropbox](https://www.dropbox.com/s/7c7rfsb0wut9vse/run.monobert.dev.small.tsv)]
