@@ -15,8 +15,8 @@ BM25 + monoBERT + duoBERT + TCP (this code) | 0.379 | 0.390
 
 
 For more details, check out our paper:
-- R Nogueira, W Yang, K Cho, J Lin. [Multi-stage document ranking with BERT](https://arxiv.org/pdf/1910.14424.pdf).
 
++ Rodrigo Nogueira, Wei Yang, Kyunghyun Cho, and Jimmy Lin. [Multi-Stage Document Ranking with BERT.](https://arxiv.org/abs/1910.14424) _arXiv:1910.14424_, October 2019.
 
 ## Data and Trained Models
 
@@ -66,6 +66,8 @@ File | Size | MD5 | Download
 `collection.tar.gz` | 987 MB | `87dd01826da3e2ad45447ba5af577628` | [[Dropbox](https://www.dropbox.com/s/m1n2wf80l1lb9j1/collection.tar.gz?dl=1)]
 `triples.train.small.tar.gz` | 7.4 GB | `c13bf99ff23ca691105ad12eab837f84` | [[Dropbox](https://www.dropbox.com/s/6r4a8hpcgq0szep/triples.train.small.tar.gz?dl=1)]
 
+All of the above files are stored in [this repo](https://git.uwaterloo.ca/jimmylin/duobert-data).
+As an alternative to downloading each file separately, clone the repo and you'll have everything.
 
 ## Replicating our MS MARCO results with duoBERT
 Here we provide instructions on how to replicate our BM25 + monoBERT + duoBERT + TCP dev run on MS MARCO leaderboard.
