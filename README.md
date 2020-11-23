@@ -13,10 +13,13 @@ MSMARCO Passage Re-Ranking Leaderboard (Jan 13th 2020) | Eval MRR@10  | Dev MRR@
 SOTA - Enriched BERT base + AOA index + CAS | 0.393 | 0.408
 BM25 + monoBERT + duoBERT + TCP (this code) | 0.379 | 0.390
 
-
 For more details, check out our paper:
 
 + Rodrigo Nogueira, Wei Yang, Kyunghyun Cho, and Jimmy Lin. [Multi-Stage Document Ranking with BERT.](https://arxiv.org/abs/1910.14424) _arXiv:1910.14424_, October 2019.
+
+**NOTE!** The duoBERT model is no longer under active development and this repo is no longer being maintained.
+We have shifted our efforts to [ranking with sequence-to-sequence models](https://www.aclweb.org/anthology/2020.findings-emnlp.63/).
+A T5-based variant of the mono/duo design is described in [an overview of our submissions to the TREC-COVID challenge](https://www.aclweb.org/anthology/2020.sdp-1.5/), and a more detailed description of mono/duoT5 is in preparation.
 
 ## Data and Trained Models
 
